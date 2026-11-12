@@ -5,3 +5,4 @@ import tn.esprit.autoloc.entity.Agence;
 
 public interface AgenceRepository extends JpaRepository<Agence, Long> {
 }
+

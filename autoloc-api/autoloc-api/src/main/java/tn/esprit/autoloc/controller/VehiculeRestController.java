@@ -46,5 +46,28 @@ public class VehiculeRestController {
     public void deleteVehicule(@PathVariable("id") Long idVehicule) {
         vehiculeService.deleteVehicule(idVehicule);
     }
-}
 
+    @Operation(summary = "Affecter un véhicule à une agence")
+    @PutMapping("/{idVehicule}/affecter-agence/{idAgence}")
+    public Vehicule affecterVehicule(
+            @PathVariable("idVehicule") Long idVehicule,
+            @PathVariable("idAgence") Long idAgence) {
+        return vehiculeService.affecterVehicule(idVehicule, idAgence);
+    }
+
+    @Operation(summary = "Affecter un équipement à un véhicule")
+    @PutMapping("/{idVehicule}/affecter-equipement/{idEquipement}")
+    public Vehicule affecterEquipement(
+            @PathVariable("idVehicule") Long idVehicule,
+            @PathVariable("idEquipement") Long idEquipement) {
+        return vehiculeService.affecterEquipement(idVehicule, idEquipement);
+    }
+
+    @Operation(summary = "Désaffecter un équipement d'un véhicule")
+    @PutMapping("/{idVehicule}/desaffecter-equipement/{idEquipement}")
+    public Vehicule desaffecterEquipement(
+            @PathVariable("idVehicule") Long idVehicule,
+            @PathVariable("idEquipement") Long idEquipement) {
+        return vehiculeService.desaffecterEquipement(idVehicule, idEquipement);
+    }
+}
