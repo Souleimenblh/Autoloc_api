@@ -4,6 +4,7 @@ import tn.esprit.autoloc.entity.Contrat;
 
 import java.util.List;
 
+// Service contract: declares the operations available to controllers.
 public interface IContratService {
     Contrat addContrat(Contrat contrat);
     Contrat updateContrat(Contrat contrat);

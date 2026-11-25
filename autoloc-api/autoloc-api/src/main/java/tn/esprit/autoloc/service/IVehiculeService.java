@@ -4,6 +4,7 @@ import tn.esprit.autoloc.entity.Vehicule;
 
 import java.util.List;
 
+// Service contract: declares the operations available to controllers.
 public interface IVehiculeService {
     Vehicule addVehicule(Vehicule vehicule);
     Vehicule updateVehicule(Vehicule vehicule);

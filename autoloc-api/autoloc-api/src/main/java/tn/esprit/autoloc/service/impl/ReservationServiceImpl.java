@@ -10,6 +10,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+// Service implementation: coordinates application operations and repository calls.
 public class ReservationServiceImpl implements IReservationService {
 
     private final ReservationRepository reservationRepository;

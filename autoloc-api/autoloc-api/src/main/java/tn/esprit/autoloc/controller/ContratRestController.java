@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/contrats")
 @RequiredArgsConstructor
+// REST controller: maps HTTP requests to service operations for this resource.
 public class ContratRestController {
 
     private final IContratService contratService;

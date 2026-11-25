@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/equipements")
 @RequiredArgsConstructor
+// REST controller: maps HTTP requests to service operations for this resource.
 public class EquipementRestController {
 
     private final IEquipementService equipementService;

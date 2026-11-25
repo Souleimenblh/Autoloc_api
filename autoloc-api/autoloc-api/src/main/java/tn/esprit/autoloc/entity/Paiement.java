@@ -15,6 +15,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+// JPA entity: Hibernate maps this class to a database table.
 public class Paiement {
 
     @Id

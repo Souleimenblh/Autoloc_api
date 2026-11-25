@@ -4,6 +4,7 @@ import tn.esprit.autoloc.entity.Agence;
 
 import java.util.List;
 
+// Service contract: declares the operations available to controllers.
 public interface IAgenceService {
     Agence addAgence(Agence agence);
     Agence updateAgence(Agence agence);

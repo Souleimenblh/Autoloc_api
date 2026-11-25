@@ -34,6 +34,23 @@ autoloc-api/
     └── test/java/        JPA association and cascade tests
 ```
 
+### What the Java folders do (and the parts that can be confusing)
+
+These notes explain the responsibilities of the folders under `src/main/java/tn/esprit/autoloc`. They are documentation only; the Java source files are unchanged.
+
+| Folder or file | Responsibility and concept to understand |
+| --- | --- |
+| `config/` | Defines application-wide configuration. `OpenApiConfig` adds the API title, version, description, and contact shown in the generated OpenAPI documentation. |
+| `controller/` | Defines the HTTP contract: URL, method, path variables, and JSON input/output. Controllers delegate business and persistence work to services; `@RequestBody` converts incoming JSON into an entity, and `@PathVariable` reads values such as an ID from the URL. |
+| `entity/` | Contains JPA entities, which Hibernate maps to database tables. Relationship annotations have an owning side (the side that writes the foreign key or join table) and sometimes an inverse side marked with `mappedBy`. Updating only the inverse side may not persist a relationship. |
+| `enums/` | Restricts fields such as vehicle status and payment method to named values. Because the entities use `EnumType.STRING`, JSON must use the exact enum spelling, for example `"DISPONIBLE"`. |
+| `repository/` | Provides database operations through Spring Data JPA. Extending `JpaRepository<Entity, IdType>` supplies common operations such as `save`, `findById`, and `deleteById` without handwritten SQL. A method such as `findByAgence_IdAgence` is a query derived from the property path. |
+| `service/` | Holds service interfaces and their implementations. Controllers depend on the interfaces, while Spring injects the `@Service` implementation. This keeps HTTP handling separate from application and database operations. |
+| `service/impl/` | Implements the service methods, usually by calling repositories. Relationship operations first load existing rows by ID, then update the owning entity and save it. In this project, CRUD update methods call `save`; if the supplied ID does not exist, JPA may insert a new row. |
+| `AutolocApiApplication.java` | Main Spring Boot entry point. Its package location matters: component scanning starts here and discovers the child packages such as controllers, services, and repositories. |
+
+The most subtle entity settings are `FetchType.LAZY` and cascade options. `LAZY` means related rows are loaded only when accessed; returning entities directly from a REST controller can therefore expose serialization or database-session issues for relationships. Cascade controls whether an operation on one entity propagates to related entities: it is not the same as a database foreign-key rule. The current tests in `src/test/java` cover several cascade and association cases.
+
 ## 3. Requirements
 
 Install a Java 17 JDK, Maven 3.6.3 or later, and MySQL 8 (or a compatible MySQL server). Ensure `java`, `mvn`, and the MySQL client are available in your terminal. The database must be reachable at the host and port configured in `application.properties`.

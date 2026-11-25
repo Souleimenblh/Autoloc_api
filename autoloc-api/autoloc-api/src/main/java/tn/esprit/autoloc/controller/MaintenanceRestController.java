@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/maintenances")
 @RequiredArgsConstructor
+// REST controller: maps HTTP requests to service operations for this resource.
 public class MaintenanceRestController {
 
     private final IMaintenanceService maintenanceService;

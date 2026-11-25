@@ -4,6 +4,7 @@ import tn.esprit.autoloc.entity.Maintenance;
 
 import java.util.List;
 
+// Service contract: declares the operations available to controllers.
 public interface IMaintenanceService {
     Maintenance addMaintenance(Maintenance maintenance);
     Maintenance updateMaintenance(Maintenance maintenance);

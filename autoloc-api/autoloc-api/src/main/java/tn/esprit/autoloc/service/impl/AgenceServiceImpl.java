@@ -10,6 +10,7 @@ import java.util.List;
 
 @Service
 
+// Service implementation: coordinates application operations and repository calls.
 public class AgenceServiceImpl implements IAgenceService {
 
     private final AgenceRepository agenceRepository;

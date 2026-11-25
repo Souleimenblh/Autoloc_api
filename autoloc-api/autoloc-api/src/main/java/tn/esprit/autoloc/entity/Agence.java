@@ -14,6 +14,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+// JPA entity: Hibernate maps this class to a database table.
 public class Agence {
 
     @Id

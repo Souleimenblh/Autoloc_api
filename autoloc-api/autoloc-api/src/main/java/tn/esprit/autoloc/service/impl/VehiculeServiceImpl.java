@@ -14,6 +14,7 @@ import java.util.List;
 
 @Service
 
+// Service implementation: coordinates application operations and repository calls.
 public class VehiculeServiceImpl implements IVehiculeService {
 
     private final VehiculeRepository vehiculeRepository;

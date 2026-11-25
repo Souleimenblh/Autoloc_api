@@ -12,6 +12,7 @@ import tn.esprit.autoloc.enums.RoleEmploye;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+// JPA entity: Hibernate maps this class to a database table.
 public class Employe {
 
     @Id
